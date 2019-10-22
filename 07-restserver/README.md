@@ -10,6 +10,8 @@ npm i bcrypt --save
 npm i underscore --save
 npm i jsonwebtoken --save
 
+npm install google-auth-library --save
+
 
 tip postman:
 En seccion test (Params, Headers, etc)
