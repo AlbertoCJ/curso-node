@@ -1,0 +1,563 @@
+{
+	"info": {
+		"_postman_id": "f7e72073-682f-4f7b-ab5b-a0206cff9fdb",
+		"name": "curso-node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "07-restserver",
+			"item": [
+				{
+					"name": "Usuario: Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Alberto18",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alberto18@alberto.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "SUPER_ROLE",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/usuario",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario"
+							]
+						},
+						"description": "Creamos usuario de BD"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario: editar usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "PepePEPEPPEPE",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "USER_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123455665",
+									"type": "text"
+								},
+								{
+									"key": "google",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/usuario/5dadef4c4ec20f30581410db",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario",
+								"5dadef4c4ec20f30581410db"
+							]
+						},
+						"description": "Actualiza Usuario menos contraseña y google"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario: Get Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuario?limite=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "limite",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Obtenemos todos los usuarios por página.\n\n?desde=10\n?limit=5"
+					},
+					"response": []
+				},
+				{
+					"name": "usuario: Borrar usuario de DB",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuario/5dac7369d0b22511cc143a65",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario",
+								"5dac7369d0b22511cc143a65"
+							]
+						},
+						"description": "Borramos un usuario de Base de datos."
+					},
+					"response": []
+				},
+				{
+					"name": "Login: Normal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aafb28cd-bab4-45ed-9198-1dae6e258ce5",
+								"exec": [
+									"let resp = pm.response.json();",
+									"if (resp.ok) {",
+									"    let token = resp.token;",
+									"    pm.environment.set(\"token\", token);   ",
+									"} else {",
+									"    console.log('No se actualizó el token');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test3@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Login normal"
+					},
+					"response": []
+				},
+				{
+					"name": "Login: Google",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1e2f4762-b933-4f7b-81a9-5c3c7eedf191",
+								"exec": [
+									"let resp = pm.response.json();",
+									"if (resp.ok) {",
+									"    let token = resp.token;",
+									"    pm.environment.set(\"token\", token);   ",
+									"} else {",
+									"    console.log('No se actualizó el token');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idtoken",
+									"value": "tokenGeneradoAlEjecutarIndex",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Autenticación por Google"
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria: Crear una categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "Bebida Caliente",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categoria",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categoria"
+							]
+						},
+						"description": "Crea una categoria"
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria: Actualizar una categoria",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "descripcion",
+									"value": "Bebida Fria",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categoria/5db08b2f27fcc735f870269c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categoria",
+								"5db08b2f27fcc735f870269c"
+							]
+						},
+						"description": "Actualiza la categoria"
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria: Borrar categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categoria/5db08ee5dba6891be4a52290",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categoria",
+								"5db08ee5dba6891be4a52290"
+							]
+						},
+						"description": "Borramos la categoria"
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria: Obtener todas las categorias",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categoria",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria: Obtener una categoria por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categoria/5db0903cfcfd7c0a2c0be3ba",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categoria",
+								"5db0903cfcfd7c0a2c0be3ba"
+							]
+						},
+						"description": "Obtiene la categoria por ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Producto: Crea un producto ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Ensalada Cesar",
+									"type": "text"
+								},
+								{
+									"key": "precioUni",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "categoria",
+									"value": "5db095dd577e592428d92cb2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/producto",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto: editar producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nombre",
+									"value": "Ensalada super rica",
+									"type": "text"
+								},
+								{
+									"key": "precioUni",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "categoria",
+									"value": "5db095dd577e592428d92cb2",
+									"type": "text"
+								},
+								{
+									"key": "disponible",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/producto/5db09bd84be4f613b8be43d5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"producto",
+								"5db09bd84be4f613b8be43d5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
