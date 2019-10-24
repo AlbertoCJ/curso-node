@@ -554,6 +554,104 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Producto: Obtiene todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						},
+						"description": "Obtiene todos los productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Producto: Obtener un producto por ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/producto/5db09bd84be4f613b8be43d5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"producto",
+								"5db09bd84be4f613b8be43d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto: Borrar un producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/producto/5db09bd84be4f613b8be43d5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"producto",
+								"5db09bd84be4f613b8be43d5"
+							]
+						},
+						"description": "Este servicio no borra, simplemente cambia el estado de disponible a falso"
+					},
+					"response": []
+				},
+				{
+					"name": "Producto: Buscar por un término un producto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/productos/buscar/Ensalada",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos",
+								"buscar",
+								"Ensalada"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
