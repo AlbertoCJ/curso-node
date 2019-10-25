@@ -12,6 +12,8 @@ npm i jsonwebtoken --save
 
 npm install google-auth-library --save
 
+npm install express-fileupload --save
+
 
 tip postman:
 En seccion test (Params, Headers, etc)
