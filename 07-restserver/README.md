@@ -2,6 +2,7 @@
 Instalar mongoDB.
 npm i -g nodemon
 
+```
 npm i express --save
 npm i body-parser --save 
 npm i mongoose --save
@@ -13,11 +14,11 @@ npm i jsonwebtoken --save
 npm install google-auth-library --save
 
 npm install express-fileupload --save
-
+```
 
 tip postman:
 En seccion test (Params, Headers, etc)
-
+```
 let resp = pm.response.json();
 if (resp.ok) {
     let token = resp.token;
@@ -25,3 +26,4 @@ if (resp.ok) {
 } else {
     console.log('No se actualizó el token');
 }
+```
