@@ -1,6 +1,6 @@
 # Notas:
 
-Aplicación chat sin UI en Node usando socket.io
+Aplicación chat con UI en Node usando socket.io
 
 Recuerden que deben de reconstruir los módulos de node con el comando
 
